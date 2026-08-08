@@ -1,15 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StatusBadge } from '../common/StatusBadge';
 import { Calendar, Layers, ArrowRight, Edit2, Trash2 } from 'lucide-react';
+import { storyService } from '../../services/storyService';
 
 export function ProjectCard({ project, onOpen, onEdit, onDelete }) {
+  const [storyCount, setStoryCount] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchStoryCount = async () => {
+      if (!project?.id) {
+        if (isMounted) {
+          setStoryCount(0);
+          setLoading(false);
+        }
+        return;
+      }
+
+      setLoading(true);
+      try {
+        const res = await storyService.getStoriesByProject(project.id);
+        if (isMounted) {
+          if (res && res.success && Array.isArray(res.data)) {
+            setStoryCount(res.data.length);
+          } else {
+            setStoryCount(0);
+          }
+        }
+      } catch (err) {
+        if (isMounted) {
+          setStoryCount(0);
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchStoryCount();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [project.id]);
+
   const formattedDate = new Date(project.created_at).toLocaleDateString(undefined, {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
   });
-
-  const storyCount = project.user_stories ? project.user_stories.length : 0;
 
   return (
     <div className="project-card">
@@ -31,7 +73,11 @@ export function ProjectCard({ project, onOpen, onEdit, onDelete }) {
         </div>
         <div className="meta-item">
           <Layers size={14} />
-          <span>{storyCount} {storyCount === 1 ? 'User Story' : 'User Stories'}</span>
+          <span>
+            {loading
+              ? 'Loading...'
+              : `${storyCount} ${storyCount === 1 ? 'User Story' : 'User Stories'}`}
+          </span>
         </div>
       </div>
 
