@@ -6,6 +6,31 @@ A full-stack web application designed for small teams (~3–10 users) to manage 
 
 ---
 
+## 🎥 Project Demonstration
+
+A complete screen-recorded demonstration of the Agile Project Manager application is available below.
+
+### ▶️ Demo Video
+
+[Watch the Complete Project Demonstration](https://youtu.be/jXJIIUu5iXQ)
+
+The demonstration covers:
+
+- 📊 **Dashboard** and project overview
+- 📁 **Project Management**
+- 📝 **User Story Management**
+- ✅ **Task Management**
+- 🔄 **Status and Priority Management**
+- ✏️ **CRUD Operations**
+- 📈 **Progress Reporting**
+- 🔌 **REST APIs using Swagger UI**
+- 🏗️ **Application architecture and framework**
+- 📂 **GitHub repository and project structure**
+
+The video includes voice narration explaining the framework used, key features, functionality, backend APIs, and overall project workflow.
+
+---
+
 ## 1. Project Overview
 
 Managing software development initiatives in small teams requires a simple, intuitive, and structured tool without the bloat of enterprise project management platforms.
