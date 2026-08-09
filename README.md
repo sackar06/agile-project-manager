@@ -14,6 +14,8 @@ A complete screen-recorded demonstration of the Agile Project Manager applicatio
 
 [Watch the Complete Project Demonstration](https://youtu.be/jXJIIUu5iXQ)
 
+**[View/Download the Demonstration from Google Drive](https://drive.google.com/file/d/1qtGoC6cD1W5oikw_lJETG1fSoEYM7skv/view?usp=sharing)**
+
 The demonstration covers:
 
 - 📊 **Dashboard** and project overview
